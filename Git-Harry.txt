@@ -1,0 +1,23 @@
+git init --> Initializing the Git Repo
+git config --global user.name "Anmol"
+git config --global user.email "anmolkhilwani@gmail.com
+git add --a --> This command adds all the files into the staging area
+
+rm -rf .git --> This command is used to make the directory back to normal that is not being a git repo
+.gitignore file can be used to avoid tracking any files or even a directory by adding the concerned into the .gitignore file. For instance if we want to ignore a particular extension (.log) we can just enter *.log in the .gitignore file
+
+git diff --> This command is used to see the difference between the one version of file which is in the staging area and the other version which is just modified and is present in the working directory
+git diff --staged --> This command is used to compare the difference between the files in the staging area and in the previous commit
+
+Deleting and Renamig a File with the help of git commands is better because if we do it manually for instance if we rename f1 to f2 git will think that we have deleted f1 and added f2 and when we add it to the staging area it will understand that we have renamed it instead. 
+When we do the above operations using git commands it will automatically add it to the staging area after performing the operations
+git rm file name --> Deleting
+git mv old_name new_name -->Renaming
+
+When a file which is already being tracked is added to the .gitignore file and if we maje certain changes to that file and when we run the git status command it should not show that it has been modified but it will. Hence if we want to ignore it we first need to explicitly inform the git that we are untracking that file 
+git rm --cached file_name --> The command will untrack the file and then it will be ignored when it is modified
+
+To unstage the files which were staged using git add command and this command appears in git status output --> git reset HEAD file_name
+To restore the file to the previous that is undo the changes made --> git checkout file_name. But for this command to work we need to first unstage the file using the above command 
+To restore all the files to the previous commit --> git checkout -f
+

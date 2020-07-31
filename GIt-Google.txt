@@ -1,0 +1,63 @@
+Diffing and Patching
+--> diff file1 file2 command will give the difference between the files 
+--> diff file1 file2 > fix.diff Here fix.diff will be consisting of the difference between the files
+--> By using the --> patch file1 fix.diff we can make the changes which are usually are the corrections
+
+To check the current stage of the work flow we can use the command --> git status
+Create a Directory and Folder and then get into the Folder and then write the command  --> git init
+This will intialize the git repository which the track the changes and will contain the history of files. The Basic Git Work Flow comprises of three stages which are :
+1. Modified --> Adding changes to the files 
+2. Staged --> By writing the --> git add command to add it to the staged area
+3. Commited --> By writing the --> git commit command which will open up a editor to write the commit message and after writing the commit message to quit the editor we need to -->Press ESC then -->Type :x! and then press enter
+
+Instead of opening up a editor we can use --> git commit -m "commit message" command
+To check the commit messages we can use --> git log command and to quit the the git log console we need to -->Press Q
+To check the configuration we can use --> git config -l command
+
+We can skip the staging area if we are sure about the changes which we want to commit and this only works for the files which are atleast once added to the staging area if doesnot work for the new fies. For this we can the '-a' flag to the git commit command --> git commit -a 
+
+#Viewing more about commits
+-->git log -p command shows the lines which were added or removed that is what were the changes made in the particular commit
+
+# Filtering the Commits 
+-->git log -p -n (n can be 2 3 4 ...) here n are number of commits we want to view along with the changes made in that commit
+-->git log --since=2.days --> This command can be used to view the commit according to the timeline
+-->git log --since=2.weeks or 5.months
+
+-->git show "commit id" show the details of a particular commit
+-->git log --stat shows the number of lines added or removed (Shorter version of -p version) and also it show the files in which the changes were made
+
+-->git diff works same as diff -u and shows the changes made before being staged and once staged we can use git diff --staged for viewing the changes by staged it means we have invoked the command -->git add 
+
+-->git add -p here the -p flag is for asking the user if it needs to be staged prior to staging
+-->git rm removes the files from the repository and once removed gets staged and needs to be commited
+-->git mv command renames the files in the repo
+-->git checkout filename command helps us to revert back to the version of file before the change which we do not require was made
+
+-->git add * expands to all the files and adds all the changes in the working tree to the staged area
+-->git reset HEAD filename command makes the file untracked i.e removes it from the staging area and we can use the -p flag for git to ask about the particular changes made
+-->git commit --amend overwrites the previously commit and is useful for the local commits done
+-->git revert HEAD inverses the changes of previous commit (~Roll Back)
+
+-->Branch : It is a pointer to our commit instead of messing up with the faulty could which is not ready to be deployed in the main branch (Master) we can create branch and experiment there
+-->git branch command helps to see the branches in our repo
+-->git branch branch_name command creates the branch
+-->git checkout branch_name switches to the currently created branch and git also provides a way to create and switch to the branch in the same line of code -->git checkout -b branch_name
+-->git branch -d branch_name deletes the branch that we no longer require
+
+-->git merge branch_name merges the branch to the master branch and it is done in two ways i.e fast forward and a three way merge
+-->A merge conflict occurs when changes are in same part of same file in two different branches and to resolve this we need to remove the markers in the file and then use -->git add filename and then finally use the -->git commit command
+-->git merge --abort can be used to cancel the merger 
+-->A better way viewing the info of merge is -->git log --graph --oneline command
+
+-->Working with Git Hub
+
+-->git clone "git url" can be used to obtain the repo in our local machine
+-->git push command can be used to update the repo wrt to changes made locally
+-->git config --global credential.helper cache command can be used to avoid entering the login credentials every time during each command. Git has inbuilt credential.helper by this command we enable it
+-->git pull command is used to retreive the new changes to the local repo
+-->git remote -v and git remote show origin show the details of the URL's of the fetch and push and about the master/origin and local repo's
+-->git branch -r command shows the branches in the remote repo
+-->git fetch command is similar to git pull command but doesn't automatically merge to the local repo we need to use git merge command explicitly
+
+
